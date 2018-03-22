@@ -5,7 +5,7 @@ class PokemonsController < ApplicationController
 
   def capture
 		@pokemon = Pokemon.find(params[:id])
-		@pokemon.trainer = current_trainer
+    @pokemon.trainer_id = current_trainer.id
 		@pokemon.save
 		redirect_to root_path
   end
@@ -22,7 +22,6 @@ class PokemonsController < ApplicationController
 
   def create
     @pokemon = Pokemon.create(pokemon_params)
-    @pokemon.trainer = current_trainer
     @pokemon.trainer_id = current_trainer.id
     @pokemon.level = 1
     @pokemon.health = 100

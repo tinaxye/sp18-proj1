@@ -7,7 +7,11 @@
 <% end %>
 <br/>
 
-<h3><%= @trainer.name if @trainer.name %>'s Pokemon</h3>
+<% if @trainer.name %>
+  <h3><%= @trainer.name if @trainer.name %>'s Pokemon</h3>
+<% else %>
+  <h3>Trainer <%= @trainer.id if @trainer.id %>'s Pokemon</h3>
+<% end %>
 <% @trainer.pokemons.each do |pokemon| %>
   <% if pokemon.ndex %>
     <%= image_tag("pokemon/#{pokemon.ndex}.png", alt: "pokemon") %>
